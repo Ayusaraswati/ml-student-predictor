@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic ML Predictor & Student Hub</title>
+    <style>
+        :root {
+            --bg-base: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --accent-green: #22c55e;
+            --accent-blue: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px 24px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .speaker-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .speaker-info strong {
+            color: var(--text-main);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%), var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .hero h1 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: var(--accent-green);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Grid Utama */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Form Input Studi Kasus Mahasiswa */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        input, select {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .predict-btn {
+            background: var(--accent-green);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .predict-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Hasil Prediksi Box */
+        .result-box {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            min-height: 110px;
+        }
+
+        .result-box strong {
+            color: var(--accent-green);
+        }
+
+        /* Penjelasan Materi Box */
+        .info-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #0f172a;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .grid-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span>🎓</span> Academic ML Predictor Hub
+            </div>
+            <div class="speaker-info">
+                Materi: <strong>Introduction to Machine Learning</strong><br>
+                <small>Dr. Taniza binti Tajuddin (UiTM Kedah, Malaysia)</small>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Studi Kasus: Prediksi Kelulusan & Performa Mahasiswa</h1>
+            <p>Penerapan algoritme Machine Learning (*Supervised Learning - Classification*) untuk memprediksi status kelulusan mahasiswa berdasarkan jam belajar, persentase kehadiran kuliah, dan nilai tugas harian.</p>
+        </div>
+
+        <!-- Grid Layout Utama -->
+        <div class="grid-layout">
+            
+            <!-- Kolom Kiri: Simulasi Form Interaktif -->
+            <div class="card">
+                <div class="card-title">
+                    <span>⚡ Simulasi Prediksi Status Mahasiswa</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Rata-rata Jam Belajar per Hari (Jam):</label>
+                    <input type="number" id="studyHours" value="4" min="1" max="12">
+                </div>
+
+                <div class="form-group">
+                    <label>Persentase Kehadiran Kuliah (%):</label>
+                    <input type="number" id="attendance" value="85" min="0" max="100">
+                </div>
+
+                <div class="form-group">
+                    <label>Nilai Rata-rata Tugas / UTS:</label>
+                    <input type="number" id="score" value="78" min="0" max="100">
+                </div>
+
+                <button class="predict-btn" onclick="runPrediction()">Jalankan Model Prediksi</button>
+            </div>
+
+            <!-- Kolom Kanan: Hasil & Penjelasan Konsep -->
+            <div class="card">
+                <div class="card-title">
+                    <span>📊 Hasil Analisis & Keputusan Model</span>
+                </div>
+
+                <div class="result-box" id="predictionResult">
+                    <strong>[Siap Menganalisis]:</strong> Masukkan data mahasiswa di sebelah kiri, lalu klik tombol "Jalankan Model Prediksi" untuk melihat hasil klasifikasi kelulusan berdasarkan pola data historis.
+                </div>
+
+                <div class="card-title" style="font-size: 0.95rem; margin-top: 5px;">
+                    <span>📖 Konsep Terkait (Materi Kuliah):</span>
+                </div>
+                <div class="info-tabs">
+                    <button class="tab-btn active" onclick="showConcept('supervised', this)">Supervised</button>
+                    <button class="tab-btn" onclick="showConcept('workflow', this)">Workflow Data</button>
+                    <button class="tab-btn" onclick="showConcept('eval', this)">Evaluasi Model</button>
+                </div>
+                <div class="result-box" id="conceptBox" style="min-height: 80px; font-size: 0.85rem;">
+                    <strong>Supervised Learning:</strong> Menggunakan data berlabel historis (jam belajar, kehadiran, nilai) untuk memetakan kategori keluaran (Lulus Tepat Waktu / Perlu Perhatian).
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function runPrediction() {
+            const hours = parseFloat(document.getElementById('studyHours').value);
+            const attendance = parseFloat(document.getElementById('attendance').value);
+            const score = parseFloat(document.getElementById('score').value);
+            const resultBox = document.getElementById('predictionResult');
+
+            // Logika sederhana simulasi Machine Learning (Classification)
+            let scoreCalc = (hours * 3) + (attendance * 0.4) + (score * 0.3);
+
+            if (scoreCalc >= 70) {
+                resultBox.innerHTML = `<strong>Status Prediksi: LULUS TEPAT WAKTU (High Probability)</strong><br>` +
+                                       `- Skor Evaluasi Model: ${scoreCalc.toFixed(1)}/100<br>` +
+                                       `- Analisis: Pola menunjukkan konsistensi belajar dan kehadiran yang sangat baik sesuai data latih.`;
+            } else {
+                resultBox.innerHTML = `<strong>Status Prediksi: PERLU PERHATIAN / RISIKO TERLAMBAT</strong><br>` +
+                                       `- Skor Evaluasi Model: ${scoreCalc.toFixed(1)}/100<br>` +
+                                       `- Analisis: Jam belajar atau kehadiran di bawah ambang batas optimal. Disarankan meningkatkan keaktifan akademik.`;
+            }
+        }
+
+        function showConcept(type, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const box = document.getElementById('conceptBox');
+            if(type === 'supervised') {
+                box.innerHTML = `<strong>Supervised Learning:</strong> Menggunakan data berlabel historis untuk memetakan kategori keluaran (Klasifikasi status mahasiswa).`;
+            } else if(type === 'workflow') {
+                box.innerHTML = `<strong>Workflow:</strong> Pengumpulan data akademik $\rightarrow$ Prapemrosesan (pembersihan data kosong) $\rightarrow$ Pemisahan Data Latih & Uji $\rightarrow$ Training model.`;
+            } else if(type === 'eval') {
+                box.innerHTML = `<strong>Evaluasi Model:</strong> Menggunakan metrik seperti Akurasi, Precision, dan Recall untuk memastikan model tidak mengalami <em>overfitting</em>.`;
+            }
+        }
+    </script>
+</body>
+</html>
